@@ -64,6 +64,7 @@ if [[ "$1" ]]; then
                     exit
                 else
                     echo "data not overwritten"
+                    exit
                 fi
             else
                 initialise
