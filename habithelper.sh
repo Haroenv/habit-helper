@@ -76,7 +76,7 @@ if [[ "$1" ]]; then
                 #lastline=`sed '$lines!d' data.txt`
                 # return the last line
                 # if [[ the last line starts with $today ]]; then 
-                    echo "you already worked today"
+                #   echo "you already worked today"
                 #   exit
                 # else
                 # somehow the missing dates have to be filled in with 0
@@ -89,7 +89,7 @@ if [[ "$1" ]]; then
             fi
             ;;
         "-r" | "--remove" )
-            #make the last filled value "0"g instead of "1"
+            #make the last filled value "0" instead of "1"
             ;;
         * | "-h" | "--help" )
             help
