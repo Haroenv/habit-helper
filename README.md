@@ -14,7 +14,11 @@ This is a simple shell script that you use to keep track of good habits like stu
 
 `./habithelper.sh -r` or `./habithelper.sh --remove` will remove the current day as one you worked
 
-`./habithelper.dh -h` or `./habithelper.sh --help` will display these options.
+`./habithelper.sh -h` or `./habithelper.sh --help` will display these options.
+
+# Contributing
+
+Since it doesn't work yet at all, feel very free to help. 
 
 # Screenshots
 
