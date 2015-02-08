@@ -8,8 +8,6 @@ NC='\033[0m' # No Color
 initialise () {
     rm data.txt
     touch data.txt
-    #echo "started: $today" > data.txt
-    #echo " " >> data.txt
 }
 
 help () {
