@@ -1,6 +1,10 @@
 #!/bin/bash
 
 today=`date "+%Y-%m-%d"`
+red='\033[0;31m'
+green='\033[0;32m'
+NC='\033[0m' # No Color
+echo -e "${red}Hello Stackoverflow${NC}"
 
 initialise () {
     rm data.txt
@@ -28,20 +32,22 @@ print () {
         #print a line of the data in data.txt
         #print=""
         lines=`grep --regexp="$" --count data.txt`
-        for (( i = 0; i < lines; i++ )); do
+        for (( i = 0; i < $lines; i++ )); do
             #line=`sed '$i!d' data.txt`
             #if [[ line ends with one ]]; then
-            #     append "\e[0;32m ▨ \e[0m"
-            #else append "\e[0;31m ▨ \e[0m"
+            #     append "${red}▨${NC}"
+            #else append "${green}▨${NC}"
             #fi
+            echo "one day streak"
         done
-        for (( i = 1; i < lines; i++ )); do
+        for (( i = 1; i < $lines; i++ )); do
             #line=`sed '$i!d' data.txt`
             #nextline=`sed '$i!d' data.txt`
-            #if [[ line || nextline ends with one ]]; then
-            #     append "\e[0;32m ▨ \e[0m"
-            #else append "\e[0;31m ▨ \e[0m"
+            #if [[ line ends with "1" || nextline ends with "1" ]]; then
+            #     append "${red}▨${NC}"
+            #else append "${green}▨${NC}"
             #fi
+            echo "two day streak"
         done
     else 
         echo "There is no data found. Use \"./habithelper.sh -i\" to initialise a data file"
@@ -76,6 +82,7 @@ if [[ "$1" ]]; then
                     echo "you already worked today"
                 #   exit
                 # else
+                # somehow the missing dates have to be filled in with 0
                 echo "$today | 1" >> data.txt
                 echo "good work!"
                 # fi
@@ -85,7 +92,7 @@ if [[ "$1" ]]; then
             fi
             ;;
         "-r" | "--remove" )
-            
+            #make the last filled value "0" instead of "1"
             ;;
         * | "-h" | "--help" )
             help
