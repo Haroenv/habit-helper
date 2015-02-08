@@ -39,8 +39,8 @@ print () {
         done
         for (( i = 1; i < $lines; i++ )); do
             #line=`sed '$i!d' data.txt`
-            #nextline=`sed '$i!d' data.txt`
-            #if [[ line ends with "1" || nextline ends with "1" ]]; then
+            #previousline=`sed '$i-1!d' data.txt`
+            #if [[ line ends with "1" || previousline ends with "1" ]]; then
             #     append "${red}▨${NC}"
             #else append "${green}▨${NC}"
             #fi
