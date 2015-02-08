@@ -4,7 +4,6 @@ today=`date "+%Y-%m-%d"`
 red='\033[0;31m'
 green='\033[0;32m'
 NC='\033[0m' # No Color
-echo -e "${red}Hello Stackoverflow${NC}"
 
 initialise () {
     rm data.txt
@@ -92,7 +91,7 @@ if [[ "$1" ]]; then
             fi
             ;;
         "-r" | "--remove" )
-            #make the last filled value "0" instead of "1"
+            #make the last filled value "0"g instead of "1"
             ;;
         * | "-h" | "--help" )
             help
