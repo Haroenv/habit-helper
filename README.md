@@ -8,11 +8,11 @@ This is a simple shell script that you use to keep track of good habits like stu
 
 `./habithelper.sh` will print a table of when you've done the thing and when you didn't. It will also show a table of two consecutive days. 
 
-`./habithelper.sh
+`./habithelper.sh -i` or `./habithelper.sh --init` will initialise a `data.txt`-file, in which the days worked and days not worked will be stored, as well as the day traking started.
 
-`./habithelper.sh -a` or `./habithelper --add` will add the current day as one you worked
+`./habithelper.sh -a` or `./habithelper.sh --add` will add the current day as one you worked.
 
-`./habithelper.sh -r` or `./habithelper --remove` will 
+`./habithelper.sh -r` or `./habithelper.sh --remove` will remove the current day as one you worked
 
 # Screenshots
 
