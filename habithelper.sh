@@ -1,6 +1,7 @@
 #!/bin/bash
 
 today=`date "+%Y-%m-%d"`
+lines=`egrep g"$" --count data.txt`
 red='\033[0;31m'
 green='\033[0;32m'
 NC='\033[0m' # No Color
@@ -28,7 +29,6 @@ print () {
         #do more than echo
         #print a line of the data in data.txt
         #print=""
-        lines=`egrep g"$" --count data.txt`
         for (( i = 0; i < $lines; i++ )); do
             #line=`sed '$i!d' data.txt`
             #if [[ line ends with one ]]; then
@@ -73,7 +73,6 @@ if [[ "$1" ]]; then
             ;;
         "-a" | "--add" )
             if [[ -e "data.txt" ]]; then
-                lines=`egrep g"$" --count data.txt`
                 #lastline=`sed '$lines!d' data.txt`
                 # return the last line
                 # if [[ the last line starts with $today ]]; then 
