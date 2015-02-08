@@ -28,7 +28,7 @@ print () {
         #do more than echo
         #print a line of the data in data.txt
         #print=""
-        lines=`grep --regexp="$" --count data.txt`
+        lines=`egrep g"$" --count data.txt`
         for (( i = 0; i < $lines; i++ )); do
             #line=`sed '$i!d' data.txt`
             #if [[ line ends with one ]]; then
@@ -73,7 +73,7 @@ if [[ "$1" ]]; then
             ;;
         "-a" | "--add" )
             if [[ -e "data.txt" ]]; then
-                lines=`egrep "$" --count data.txt`
+                lines=`egrep g"$" --count data.txt`
                 #lastline=`sed '$lines!d' data.txt`
                 # return the last line
                 # if [[ the last line starts with $today ]]; then 
