@@ -10,7 +10,9 @@ This is a simple shell script that you use to keep track of good habits like stu
 
 `./habithelper.sh
 
-`./habithelper.sh -a` or `./habithelper --add` whill add the current day as one 
+`./habithelper.sh -a` or `./habithelper --add` will add the current day as one you worked
+
+`./habithelper.sh -r` or `./habithelper --remove` will 
 
 # Screenshots
 
