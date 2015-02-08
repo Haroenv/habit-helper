@@ -1,18 +1,13 @@
 #!/bin/bash
-if [[ !"$1" ]]; then
-	if [[ -e "data.txt" ]]; then
-		echo "print table"
-		# print the table
-	else 
-		echo "help"
-			#linking to the help, or something
-	fi
-else
+if [[ "$1" ]]; then
 	case "$1" in
 		"-i" | "--init" )
 			if [[ -e "data.txt" ]]; then
 				echo "There already exists a data-file. Are you sure you want to overwrite?"
 				# make data
+			else
+				touch data.txt
+
 			fi
 			;;
 		"-a" | "--add" )
@@ -21,7 +16,15 @@ else
 		"-r" | "--remove" )
 			echo "-r" # to do
 			;;
-		"-h" | "--help" )
+		* | "-h" | "--help" )
 			echo "help" #copy from readme
 	esac
+else
+	if [[ -e "data.txt" ]]; then
+		echo "print table"
+		# print the table
+	else 
+		echo "There is no data found. Use \"./habithelper.sh -i\" to initialise a data file"
+		exit
+	fi
 fi
