@@ -14,6 +14,8 @@ This is a simple shell script that you use to keep track of good habits like stu
 
 `./habithelper.sh -r` or `./habithelper.sh --remove` will remove the current day as one you worked
 
+`./habithelper.dh -h` or `./habithelper.sh --help` will display these options.
+
 # Screenshots
 
 Todo
