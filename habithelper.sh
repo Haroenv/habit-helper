@@ -1,8 +1,12 @@
 #!/bin/bash
+
+today=`date "+%Y-%m-%d"`
+
 initialise () {
+    rm data.txt
     touch data.txt
-    #get current date
-    #first line is current date
+    #echo "started: $today" > data.txt
+    #echo " " >> data.txt
 }
 
 help () {
@@ -15,7 +19,34 @@ help () {
 -a or --add     will add the current day as one you worked.
 -r or --remove  will remove the current day as one you worked
 -h or --help    will display these options."
-    #show the options
+}
+
+print () {
+    if [[ -e "data.txt" ]]; then
+        echo "print"
+        #do more than echo
+        #print a line of the data in data.txt
+        #print=""
+        lines=`grep --regexp="$" --count data.txt`
+        for (( i = 0; i < lines; i++ )); do
+            #line=`sed '$i!d' data.txt`
+            #if [[ line ends with one ]]; then
+            #     append "\e[0;32m ▨ \e[0m"
+            #else append "\e[0;31m ▨ \e[0m"
+            #fi
+        done
+        for (( i = 1; i < lines; i++ )); do
+            #line=`sed '$i!d' data.txt`
+            #nextline=`sed '$i!d' data.txt`
+            #if [[ line || nextline ends with one ]]; then
+            #     append "\e[0;32m ▨ \e[0m"
+            #else append "\e[0;31m ▨ \e[0m"
+            #fi
+        done
+    else 
+        echo "There is no data found. Use \"./habithelper.sh -i\" to initialise a data file"
+        exit
+    fi
 }
 
 if [[ "$1" ]]; then
@@ -37,20 +68,28 @@ if [[ "$1" ]]; then
             fi
             ;;
         "-a" | "--add" )
-            echo "-a"   # to do
+            if [[ -e "data.txt" ]]; then
+                lines=`grep --regexp="$" --count data.txt`
+                #lastline=`sed '$lines!d' data.txt`
+                # return the last line
+                # if [[ the last line starts with $today ]]; then 
+                    echo "you already worked today"
+                #   exit
+                # else
+                echo "$today | 1" >> data.txt
+                echo "good work!"
+                # fi
+                print
+            else 
+                help
+            fi
             ;;
         "-r" | "--remove" )
-            echo "-r" # to do
+            
             ;;
         * | "-h" | "--help" )
             help
     esac
 else
-    if [[ -e "data.txt" ]]; then
-        echo "print table"
-        # print the table
-    else 
-        echo "There is no data found. Use \"./habithelper.sh -i\" to initialise a data file"
-        exit
-    fi
+    print
 fi
