@@ -73,7 +73,7 @@ if [[ "$1" ]]; then
             ;;
         "-a" | "--add" )
             if [[ -e "data.txt" ]]; then
-                lines=`grep --regexp="$" --count data.txt`
+                lines=`egrep "$" --count data.txt`
                 #lastline=`sed '$lines!d' data.txt`
                 # return the last line
                 # if [[ the last line starts with $today ]]; then 
