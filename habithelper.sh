@@ -25,9 +25,6 @@ help () {
 
 print () {
     if [[ -e "data.txt" ]]; then
-        echo "print"
-        #do more than echo
-        #print a line of the data in data.txt
         for (( i = 0; i < $lines; i++ )); do
             #cont=""
             #line=`sed '$i!d' data.txt`
