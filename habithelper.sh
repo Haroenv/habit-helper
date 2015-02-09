@@ -75,13 +75,18 @@ if [[ "$1" ]]; then
             if [[ -e "data.txt" ]]; then
                 #lastline=`sed '$lines!d' data.txt`
                 # return the last line
-                # if [[ the last line starts with $today ]]; then 
+                # if [[ `lastline.substring(0,10)` == $today ]]; then 
                 #   echo "you already worked today"
                 #   exit
+                # else if [[ `lastline.substring(0,10) == $yesterday ]]; then
+                    echo "$today | 1" >> data.txt
+                    echo "good work!"
                 # else
-                # somehow the missing dates have to be filled in with 0
-                echo "$today | 1" >> data.txt
-                echo "good work!"
+                #   echo "$thosedays | 0" >> data.txt
+                #   if [[ $amountmissing < 2 ]]; then
+                #       echo "you've missed a day, but not all is lost"
+                #   fi
+                #   somehow the missing dates have to be filled in with 0
                 # fi
                 print
             else 
@@ -89,7 +94,15 @@ if [[ "$1" ]]; then
             fi
             ;;
         "-r" | "--remove" )
-            #make the last filled value "0" instead of "1"
+            if [[ -e "data.txt" ]]; then
+                #lastline=`sed '$lines!d' data.txt
+                #if [[ `lastline.substring(0,10)` == $today ]]; then
+                    #sed '$lines!g' 1!0 data.txt     #replace 1 with 0 at last line
+                #else
+                    echo "You didn't work today."
+                #fi
+            fi
+            print
             ;;
         * | "-h" | "--help" )
             help
