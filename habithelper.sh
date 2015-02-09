@@ -28,23 +28,24 @@ print () {
         echo "print"
         #do more than echo
         #print a line of the data in data.txt
-        #print=""
         for (( i = 0; i < $lines; i++ )); do
+            #cont=""
             #line=`sed '$i!d' data.txt`
             #if [[ line ends with one ]]; then
-            #     append "${red}▨${NC}"
-            #else append "${green}▨${NC}"
+            #     cont += "${red}▨${NC}"
+            #else 
+            #     cont += "${green}▨${NC}"
             #fi
-            echo "one day streak"
+            echo -e "continuous: $cont"
         done
         for (( i = 1; i < $lines; i++ )); do
-            #line=`sed '$i!d' data.txt`
+            #line=`sed '$i!d' data.txt`     #How to use the data of i in here?
             #previousline=`sed '$i-1!d' data.txt`
             #if [[ line ends with "1" || previousline ends with "1" ]]; then
             #     append "${red}▨${NC}"
             #else append "${green}▨${NC}"
             #fi
-            echo "two day streak"
+            echo -e "double: $double"
         done
     else 
         echo "There is no data found. Use \"./habithelper.sh -i\" to initialise a data file"
