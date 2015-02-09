@@ -25,6 +25,7 @@ help () {
 
 print () {
     if [[ -e "data.txt" ]]; then
+        echo "continuous data"  #remove when working
         for (( i = 0; i < $lines; i++ )); do
             #cont=""
             #line=`sed '$i!d' data.txt`
@@ -35,6 +36,7 @@ print () {
             #fi
             echo -e "continuous: $cont"
         done
+        echo "double data"  #to remove when working
         for (( i = 1; i < $lines; i++ )); do
             #double=""
             #line=`sed '$i!d' data.txt`     #How to use the data of i in here?
