@@ -31,7 +31,7 @@ print () {
         for (( i = 0; i < $lines; i++ )); do
             #cont=""
             #line=`sed '$i!d' data.txt`
-            #if [[ line ends with one ]]; then
+            #if [[ `last character of line` == "1" ]]; then
             #     cont += "${red}▨${NC}"
             #else 
             #     cont += "${green}▨${NC}"
@@ -39,11 +39,13 @@ print () {
             echo -e "continuous: $cont"
         done
         for (( i = 1; i < $lines; i++ )); do
+            #double=""
             #line=`sed '$i!d' data.txt`     #How to use the data of i in here?
             #previousline=`sed '$i-1!d' data.txt`
-            #if [[ line ends with "1" || previousline ends with "1" ]]; then
-            #     append "${red}▨${NC}"
-            #else append "${green}▨${NC}"
+            #if [[ `last character of line` == "1" || `last character of previousline` == "1" ]]; then
+            #     double += "${red}▨${NC}"
+            #else 
+            #     double += "${green}▨${NC}"
             #fi
             echo -e "double: $double"
         done
