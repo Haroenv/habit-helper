@@ -7,8 +7,12 @@ green='\033[0;32m'
 NC='\033[0m' # No Color
 
 initialise () {
-    rm data.txt
-    touch data.txt
+    if [[ "$1" == "overwrite" ]]; then
+        rm data.txt
+        touch data.txt
+    else
+        touch data.txt
+    fi
 }
 
 help () {
@@ -62,14 +66,14 @@ if [[ "$1" ]]; then
                 read overwrite
                 if [[ $overwrite == y ]]; then
                     echo "overwritten data-file"
-                    initialise
+                    initialise "overwrite"
                     exit
                 else
                     echo "data not overwritten"
                     exit
                 fi
             else
-                initialise
+                initialise "no overwrite"
                 echo "created a new data-file"
             fi
             ;;
