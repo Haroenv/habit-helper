@@ -35,7 +35,8 @@ print () {
         for (( i = 0; i < $lines; i++ )); do
             #cont=""
             #line=`sed '$i!d' data.txt`
-            #if [[ `last character of line` == "1" ]]; then
+            #lastchar=`sed '$line!d' data.txt` #not line, but last character
+            #if [[ $lastchar == "1" ]]; then
             #     cont += "${red}▨${NC}"
             #else 
             #     cont += "${green}▨${NC}"
@@ -47,7 +48,9 @@ print () {
             #double=""
             #line=`sed '$i!d' data.txt`     #How to use the data of i in here?
             #previousline=`sed '$i-1!d' data.txt`
-            #if [[ `last character of line` == "1" || `last character of previousline` == "1" ]]; then
+            #lastchar=`sed '$line!d' data.txt` #not line, but last character
+            #lastprevchar=`sed '$previousline!d' data.txt` #not line, but last character
+            #if [[ $lastchar == "1" || $lastprevchar == "1" ]]; then
             #     double += "${red}▨${NC}"
             #else 
             #     double += "${green}▨${NC}"
