@@ -1,7 +1,9 @@
 #!/bin/bash
 
 today=`date "+%Y-%m-%d"`
-lines=`egrep g"$" --count data.txt`
+if [[ -e "data.txt" ]]; then
+    lines=`egrep g"$" --count data.txt`
+fi
 red='\033[0;31m'
 green='\033[0;32m'
 NC='\033[0m' # No Color
