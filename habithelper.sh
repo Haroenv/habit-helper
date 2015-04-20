@@ -20,9 +20,9 @@ initialise () {
 help () {
     echo "usage: ./habithelper.sh [options]
 
-                will print a table of when you've done the thing and when you didn't. 
-                It will also show a table of two consecutive days. 
--i or --init    will initialise a data.txt-file, in which the days worked and days not worked 
+                will print a table of when you've done the thing and when you didn't.
+                It will also show a table of two consecutive days.
+-i or --init    will initialise a data.txt-file, in which the days worked and days not worked
                 will be stored, as well as the day traking started.
 -a or --add     will add the current day as one you worked.
 -r or --remove  will remove the current day as one you worked
@@ -38,7 +38,7 @@ print () {
             #lastchar=`sed '$line!d' data.txt` #not line, but last character
             #if [[ $lastchar == "1" ]]; then
             #     cont += "${red}▨${NC}"
-            #else 
+            #else
             #     cont += "${green}▨${NC}"
             #fi
             echo -e "continuous: $cont"
@@ -52,12 +52,12 @@ print () {
             #lastprevchar=`sed '$previousline!d' data.txt` #not line, but last character
             #if [[ $lastchar == "1" || $lastprevchar == "1" ]]; then
             #     double += "${red}▨${NC}"
-            #else 
+            #else
             #     double += "${green}▨${NC}"
             #fi
             echo -e "double: $double"
         done
-    else 
+    else
         echo "There is no data found. Use \"./habithelper.sh -i\" to initialise a data file"
         exit
     fi
@@ -84,12 +84,13 @@ if [[ "$1" ]]; then
             ;;
         "-a" | "--add" )
             if [[ -e "data.txt" ]]; then
-                #lastline=`sed '$lines!d' data.txt`
+                lastline=`sed '1!d' data.txt` # lastline=`sed '$lines!d' data.txt`
                 # return the last line
-                # if [[ `lastline.substring(0,10)` == $today ]]; then 
-                #   echo "you already worked today"
-                #   exit
-                # else if [[ `lastline.substring(0,10) == $yesterday ]]; then
+                lastdate=${lastline:0:10}
+                if [[ $lastdate == $today ]]; then
+                  echo "you already worked today"
+                  exit
+                else if [[ $lastdate == $yesterday ]]; then
                     echo "$today | 1" >> data.txt
                     echo "good work!"
                 # else
@@ -97,10 +98,10 @@ if [[ "$1" ]]; then
                 #   if [[ $amountmissing < 2 ]]; then
                 #       echo "you've missed a day, but not all is lost"
                 #   fi
-                #   somehow the missing dates have to be filled in with 0
-                # fi
+                #   # somehow the missing dates have to be filled in with 0
+                fi
                 print
-            else 
+            else
                 help
             fi
             ;;
